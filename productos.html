@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantalla de Productos</title>
+    <link rel="stylesheet" href="css/productos.css">
+    <script src="js/firebaseConfig.js" type="module"></script>
+    <script src="js/productos.js" type="module"></script>
+</head>
+<body>
+    <div class="productos-container">
+        <h2>Administrar Productos</h2>
+        <form id="product-form">
+            <label for="product-name">Nombre del Producto</label>
+            <input type="text" id="product-name" placeholder="Nombre del producto" required>
+            
+            <label for="product-price">Precio (en USD)</label>
+            <input type="number" id="product-price" placeholder="Precio" step="0.01" required>
+            
+            <button type="submit">Guardar Producto</button>
+        </form>
+        
+        <h3>Lista de Productos</h3>
+        <div id="product-list"></div>
+        
+        <button id="back" class="back-button">Atrás</button>
+    </div>
+</body>
+</html>

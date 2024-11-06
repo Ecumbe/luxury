@@ -10,38 +10,34 @@
     <div class="balance-container">
         <h2>Balance</h2>
         
-        <!-- Cuadro 1: Reporte de Ventas -->
+        <!-- Primer Cuadro: Reporte de Ventas -->
         <div class="report-section">
             <h3>Reporte de Ventas</h3>
-            <div class="date-selectors">
-                <label>Fecha Desde:</label>
-                <input type="date" id="sales-start-date">
-                <label>Fecha Hasta:</label>
-                <input type="date" id="sales-end-date">
-            </div>
-            <div class="percentage-section">
-                <label>Porcentaje para Empleado:</label>
-                <input type="number" id="employee-percentage" placeholder="Ej: 25">
-                <span>%</span>
-            </div>
-            <button id="generate-sales-report">Generar Reporte de Ventas</button>
+            <label for="start-date-sales">Fecha Desde:</label>
+            <input type="date" id="start-date-sales">
+            <label for="end-date-sales">Fecha Hasta:</label>
+            <input type="date" id="end-date-sales">
+            <button id="generate-sales-report">Generar Reporte</button>
         </div>
 
-        <!-- Cuadro 2: Reporte de Citas -->
+        <!-- Segundo Cuadro: Reporte de Citas -->
         <div class="report-section">
             <h3>Reporte de Citas</h3>
-            <div class="date-selectors">
-                <label>Fecha Desde:</label>
-                <input type="date" id="appointments-start-date">
-                <label>Fecha Hasta:</label>
-                <input type="date" id="appointments-end-date">
-            </div>
-            <button id="generate-appointments-report">Generar Reporte de Citas</button>
+            <label for="start-date-appointments">Fecha Desde:</label>
+            <input type="date" id="start-date-appointments">
+            <label for="end-date-appointments">Fecha Hasta:</label>
+            <input type="date" id="end-date-appointments">
+            <button id="generate-appointments-report">Generar Reporte</button>
         </div>
-        
-        <button id="back">Atrás</button>
+
+        <!-- Botones de navegación -->
+        <div class="navigation-buttons">
+            <button id="back">Atrás</button>
+            <button id="logout">Cerrar Sesión</button>
+        </div>
     </div>
 
-    <script src="js/balance.js"></script>
+    <script src="js/firebaseConfig.js" type="module"></script>
+    <script src="js/balance.js" type="module"></script>
 </body>
 </html>

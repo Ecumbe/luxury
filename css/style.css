@@ -1,0 +1,44 @@
+/* css/style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff3f7;
+    color: #b74493;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin: 0.5em 0;
+}
+
+.logo-container img {
+    width: 250px;
+    height: auto;
+    margin: 20px 0;
+}
+
+button#login-btn {
+    background-color: #b74493;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+footer {
+    font-size: 0.8em;
+    color: #b74493;
+    margin-top: 20px;
+}

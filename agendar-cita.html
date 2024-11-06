@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Cita</title>
+    <link rel="stylesheet" href="css/agendar-cita.css">
+</head>
+<body>
+    <div class="agendar-cita-container">
+        <h2>Agendar Cita</h2>
+
+        <!-- Formulario de Cita -->
+        <div class="form-container">
+            <div class="form-row">
+                <label for="cita-date">Fecha de Cita:</label>
+                <input type="date" id="cita-date" required>
+
+                <label for="appointment-time">Hora:</label>
+                <input type="time" id="appointment-time" required>
+            </div>
+
+            <div class="form-row">
+                <label for="person-name">Nombre:</label>
+                <input type="text" id="person-name" required>
+
+                <label for="appointment-description">¿Qué se hará?</label>
+                <input type="text" id="appointment-description" required>
+            </div>
+
+            <button id="save-appointment">Guardar Cita</button>
+        </div>
+
+        <p id="message"></p>
+
+        <!-- Citas Agendadas -->
+        <div class="citas-agendadas">
+            <h3>Citas Agendadas</h3>
+            <label for="select-date">Elegir Fecha:</label>
+            <input type="date" id="select-date">
+            <div id="citas-list"></div>
+        </div>
+
+        <button id="back">Atrás</button>
+        <button id="logout">Cerrar Sesión</button>
+    </div>
+
+    <script src="js/firebaseConfig.js" type="module"></script>
+    <script src="js/agendar-cita.js" type="module"></script>
+</body>
+</html>

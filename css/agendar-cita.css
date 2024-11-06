@@ -1,0 +1,110 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f0ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.agendar-cita-container {
+    background-color: #fcdff1;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 450px;
+    text-align: center;
+}
+
+h2, h3 {
+    color: #834b8f;
+    margin-bottom: 20px;
+}
+
+.form-container {
+    margin-top: 20px;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+label {
+    display: block;
+    text-align: left;
+    color: #834b8f;
+    font-size: 0.9em;
+}
+
+input {
+    width: 48%;
+    padding: 8px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+}
+
+button {
+    width: 100%;
+    background-color: #834b8f;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #6d3b73;
+}
+
+#message {
+    color: green;
+    font-weight: bold;
+}
+
+.citas-agendadas {
+    margin-top: 30px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#citas-list {
+    margin-top: 20px;
+    text-align: left;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#citas-list div {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#citas-list button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #834b8f;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#citas-list button:hover {
+    background-color: #6d3b73;
+}
+
+input[type="date"] {
+    width: 45%;
+}

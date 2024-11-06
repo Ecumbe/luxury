@@ -15,6 +15,9 @@ body {
     padding: 30px;
     width: 450px;
     text-align: center;
+    overflow: hidden; /* Evitar desbordamiento en el contenedor principal */
+    display: flex;
+    flex-direction: column;
 }
 
 h2, h3 {
@@ -75,13 +78,15 @@ button:hover {
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-height: 300px; /* Limitar la altura de la sección de citas agendadas */
+    overflow-y: auto; /* Habilitar el scroll si las citas superan la altura */
 }
 
 #citas-list {
     margin-top: 20px;
     text-align: left;
-    max-height: 300px;
-    overflow-y: auto;
+    max-height: 250px;
+    overflow-y: auto; /* Permitir scroll */
 }
 
 #citas-list div {
@@ -107,4 +112,10 @@ button:hover {
 
 input[type="date"] {
     width: 45%;
+}
+
+/* Ajustar los botones para que estén al lado de cada cita */
+#citas-list div p {
+    margin-right: 20px;
+    flex-grow: 1; /* Hacer que el texto ocupe el espacio disponible */
 }

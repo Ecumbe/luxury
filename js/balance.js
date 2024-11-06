@@ -1,69 +1,101 @@
-import { db } from './firebaseConfig.js';
+import { db, auth } from './firebaseConfig.js';
 import { collection, getDocs, query, where } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js';
-import jsPDF from 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js';
+import { signOut } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js';
 
-document.getElementById('generate-sales-report').addEventListener('click', async () => {
-    const startDate = new Date(document.getElementById('sales-start-date').value);
-    const endDate = new Date(document.getElementById('sales-end-date').value);
-    const employeePercentage = parseFloat(document.getElementById('employee-percentage').value) || 0;
+// Referencias a elementos
+const startDateSales = document.getElementById('start-date-sales');
+const endDateSales = document.getElementById('end-date-sales');
+const generateSalesReportButton = document.getElementById('generate-sales-report');
+const startDateAppointments = document.getElementById('start-date-appointments');
+const endDateAppointments = document.getElementById('end-date-appointments');
+const generateAppointmentsReportButton = document.getElementById('generate-appointments-report');
+const backButton = document.getElementById('back');
+const logoutButton = document.getElementById('logout');
 
-    if (isNaN(employeePercentage) || !startDate || !endDate) {
-        alert("Por favor ingrese fechas y porcentaje válidos.");
+// Función para generar reporte de ventas en PDF
+async function generateSalesReport() {
+    if (!startDateSales.value || !endDateSales.value) {
+        alert('Seleccione ambas fechas.');
         return;
     }
 
-    const salesData = [];
-    const q = query(collection(db, 'ventas'), where('fecha', '>=', startDate), where('fecha', '<=', endDate));
+    const q = query(
+        collection(db, 'ventas'),
+        where('fecha', '>=', startDateSales.value),
+        where('fecha', '<=', endDateSales.value)
+    );
+
     const querySnapshot = await getDocs(q);
-    
-    let totalAmount = 0;
-    querySnapshot.forEach(doc => {
+    const reportData = [];
+    let totalValue = 0;
+
+    querySnapshot.forEach((doc) => {
         const data = doc.data();
-        salesData.push(data);
-        totalAmount += data.valor;
+        reportData.push(data);
+        totalValue += data.valor;
     });
 
-    const employeePay = (totalAmount * employeePercentage) / 100;
+    // Llamada a función para generar el PDF
+    createPDF('Reporte de Ventas', reportData, totalValue);
+}
 
-    const doc = new jsPDF();
-    doc.text('Reporte de Ventas', 10, 10);
-    doc.text(`Total Ventas: ${totalAmount}`, 10, 20);
-    doc.text(`Porcentaje Empleado (${employeePercentage}%): ${employeePay}`, 10, 30);
-
-    salesData.forEach((sale, index) => {
-        doc.text(`${index + 1}. Fecha: ${sale.fecha}, Productos: ${sale.productos}, Valor: ${sale.valor}`, 10, 40 + (index * 10));
-    });
-    
-    doc.save('Reporte_Ventas.pdf');
-});
-
-document.getElementById('generate-appointments-report').addEventListener('click', async () => {
-    const startDate = new Date(document.getElementById('appointments-start-date').value);
-    const endDate = new Date(document.getElementById('appointments-end-date').value);
-
-    if (!startDate || !endDate) {
-        alert("Por favor ingrese fechas válidas.");
+// Función para generar reporte de citas en PDF
+async function generateAppointmentsReport() {
+    if (!startDateAppointments.value || !endDateAppointments.value) {
+        alert('Seleccione ambas fechas.');
         return;
     }
 
-    const appointmentsData = [];
-    const q = query(collection(db, 'citas'), where('fecha', '>=', startDate), where('fecha', '<=', endDate));
+    const q = query(
+        collection(db, 'citas'),
+        where('fecha', '>=', startDateAppointments.value),
+        where('fecha', '<=', endDateAppointments.value)
+    );
+
     const querySnapshot = await getDocs(q);
+    const reportData = [];
 
-    querySnapshot.forEach(doc => {
-        appointmentsData.push(doc.data());
+    querySnapshot.forEach((doc) => {
+        reportData.push(doc.data());
     });
 
+    // Llamada a función para generar el PDF
+    createPDF('Reporte de Citas', reportData);
+}
+
+// Función para crear un PDF
+function createPDF(title, data, totalValue = null) {
     const doc = new jsPDF();
-    doc.text('Reporte de Citas', 10, 10);
+    doc.setFontSize(16);
+    doc.text(title, 10, 10);
 
-    appointmentsData.forEach((appointment, index) => {
-        doc.text(`${index + 1}. Fecha: ${appointment.fecha}, Nombre: ${appointment.nombre}, Hora: ${appointment.hora}`, 10, 30 + (index * 10));
+    let yPosition = 20;
+
+    data.forEach((item) => {
+        const itemText = `${item.fecha} - ${item.productos || item['que se hara']} - $${item.valor || ''} - ${item.t_pago || ''} ${item.cuenta ? `(${item.cuenta})` : ''}`;
+        doc.text(itemText, 10, yPosition);
+        yPosition += 10;
     });
 
-    doc.save('Reporte_Citas.pdf');
+    if (totalValue !== null) {
+        doc.text(`Total: $${totalValue}`, 10, yPosition + 10);
+    }
+
+    doc.save(`${title}.pdf`);
+}
+
+// Eventos de los botones
+generateSalesReportButton.addEventListener('click', generateSalesReport);
+generateAppointmentsReportButton.addEventListener('click', generateAppointmentsReport);
+
+backButton.addEventListener('click', () => {
+    window.location.href = 'menu.html';
 });
 
-document.getElementById('back').addEventListener('click', () => {
-    window.location.href = 'menu.html';
+logoutButton.addEventListener('click', () => {
+    signOut(auth).then(() => {
+        window.location.href = "index.html";
+    }).catch((error) => {
+        console.error("Error al cerrar sesión:", error);
+    });
 });

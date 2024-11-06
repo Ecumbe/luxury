@@ -13,7 +13,7 @@ body {
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: 400px;  /* Reducido para optimizar espacio */
+    width: 450px;
     text-align: center;
     overflow: hidden;
     display: flex;
@@ -40,10 +40,11 @@ label {
     text-align: left;
     color: #834b8f;
     font-size: 0.9em;
+    margin-bottom: 5px;
 }
 
-input {
-    width: 45%;  /* Ajuste para que los inputs ocupen menos espacio */
+input, select {
+    width: 45%;
     padding: 8px;
     margin: 10px 0;
     border-radius: 5px;
@@ -78,16 +79,16 @@ button:hover {
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    max-height: 220px;  /* Reducido para evitar desbordamiento */
+    max-height: 180px;  /* Ajustado */
     overflow-y: auto;  /* Scroll cuando haya muchas citas */
     width: 100%;
-    margin-bottom: 20px;  /* Separación para no tocar el formulario */
+    margin-bottom: 20px;
 }
 
 #citas-list {
     margin-top: 20px;
     text-align: left;
-    max-height: 200px;  /* Ajuste para no ocupar demasiado espacio */
+    max-height: 180px;  /* Ajustado */
     overflow-y: auto;  /* Permitir scroll */
 }
 
@@ -98,33 +99,7 @@ button:hover {
     align-items: center;
 }
 
-#citas-list button {
-    margin-left: 10px;
-    padding: 5px 10px;
-    border-radius: 5px;
-    background-color: #834b8f;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-#citas-list button:hover {
-    background-color: #6d3b73;
-}
-
-input[type="date"] {
-    width: 60%;  /* Reducción de tamaño */
-    padding: 8px;
-}
-
-input[type="time"] {
-    width: 40%;  /* Ajuste para optimizar espacio */
-    padding: 8px;
-}
-
-/* Ajustar los botones de "Sí" y "No" al lado */
 #citas-list div p {
-    margin-right: 20px;
     flex-grow: 1;
 }
 
@@ -141,3 +116,72 @@ input[type="time"] {
 #citas-list button:hover {
     background-color: #6d3b73;
 }
+
+input[type="date"], input[type="time"], input[type="text"] {
+    width: 100%;
+    padding: 8px;
+}
+
+.form-container .form-row {
+    margin-bottom: 15px;
+}
+
+input[type="date"], input[type="time"], input[type="text"] {
+    width: 100%;  /* Ocupa todo el espacio disponible */
+}
+
+#fecha-selector, #citas-agendadas-selector {
+    width: 100%;  /* Ocupa todo el espacio pero con un tamaño optimizado */
+    padding: 8px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+#fecha-selector {
+    width: 60%;  /* Reducción del tamaño de la fecha */
+    display: inline-block;
+}
+
+#citas-agendadas-selector {
+    width: 40%;  /* Optimización de espacio para la visualización */
+    display: inline-block;
+}
+
+.citas-agendadas {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+button {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    background-color: #834b8f;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #6d3b73;
+}
+
+/* Botones de "Sí" y "No" en la misma fila */
+.citas-agendadas .citas-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.citas-agendadas .citas-list-item button {
+    width: 45%; /* Botones de "Sí" y "No" al lado */
+}
+

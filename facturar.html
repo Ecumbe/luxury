@@ -15,28 +15,35 @@
         
         <!-- Detalles de facturación -->
         <div class="factura-detalles">
-            <p>Total: $<span id="total-amount">0.00</span></p>
-            
-            <!-- Método de pago -->
-            <label for="payment-method">Método de Pago:</label>
-            <select id="payment-method">
-                <option value="efectivo">Efectivo</option>
-                <option value="transferencia">Transferencia</option>
-            </select>
-            
-            <!-- Selección de cuenta si es transferencia -->
-            <div id="account-selection" style="display: none;">
-                <label for="account">Cuenta:</label>
-                <select id="account">
-                    <option value="Arianna">Arianna</option>
-                    <option value="Juanita">Juanita</option>
-                </select>
+            <!-- Total fuera del cuadro principal -->
+            <div class="total-container">
+                <p>Total: $<span id="total-amount">0.00</span></p>
             </div>
             
-            <!-- Fecha de facturación -->
-            <label for="factura-date">Fecha:</label>
-            <input type="date" id="factura-date" required>
-            
+            <!-- Método de pago, Cuenta y Fecha en la misma línea -->
+            <div class="payment-date-container">
+                <div>
+                    <label for="payment-method">Método de Pago:</label>
+                    <select id="payment-method">
+                        <option value="efectivo">Efectivo</option>
+                        <option value="transferencia">Transferencia</option>
+                    </select>
+                </div>
+                
+                <div id="account-selection" style="display: none;">
+                    <label for="account">Cuenta:</label>
+                    <select id="account">
+                        <option value="Arianna">Arianna</option>
+                        <option value="Juanita">Juanita</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="factura-date">Fecha:</label>
+                    <input type="date" id="factura-date" required>
+                </div>
+            </div>
+
             <!-- Botones -->
             <button id="save-invoice">Guardar Factura</button>
             <button id="back">Atrás</button>

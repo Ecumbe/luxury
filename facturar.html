@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facturar</title>
+    <link rel="stylesheet" href="css/facturar.css">
+</head>
+<body>
+    <div class="facturacion-container">
+        <h2>Facturación</h2>
+        
+        <!-- Selección de productos -->
+        <div id="product-list"></div>
+        
+        <!-- Detalles de facturación -->
+        <div class="factura-detalles">
+            <p>Total: $<span id="total-amount">0.00</span></p>
+            
+            <!-- Método de pago -->
+            <label for="payment-method">Método de Pago:</label>
+            <select id="payment-method">
+                <option value="efectivo">Efectivo</option>
+                <option value="transferencia">Transferencia</option>
+            </select>
+            
+            <!-- Selección de cuenta si es transferencia -->
+            <div id="account-selection" style="display: none;">
+                <label for="account">Cuenta:</label>
+                <select id="account">
+                    <option value="Arianna">Arianna</option>
+                    <option value="Juanita">Juanita</option>
+                </select>
+            </div>
+            
+            <!-- Fecha de facturación -->
+            <label for="factura-date">Fecha:</label>
+            <input type="date" id="factura-date" required>
+            
+            <!-- Botones -->
+            <button id="save-invoice">Guardar Factura</button>
+            <button id="back">Atrás</button>
+            <button id="logout">Cerrar Sesión</button>
+        </div>
+    </div>
+
+    <script src="js/firebaseConfig.js" type="module"></script>
+    <script src="js/facturar.js" type="module"></script>
+</body>
+</html>

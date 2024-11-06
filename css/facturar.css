@@ -1,0 +1,145 @@
+/* css/facturar.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f0ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.facturacion-container {
+    background-color: #fcdff1;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 450px;
+    text-align: center;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+h2 {
+    color: #834b8f;
+    margin-bottom: 20px;
+    font-size: 1.6em;
+}
+
+.factura-detalles {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    text-align: left;
+    color: #834b8f;
+    font-size: 0.9em;
+}
+
+#product-list {
+    margin-bottom: 20px;
+    text-align: left;
+    overflow-y: auto;
+    max-height: 200px;
+}
+
+.product-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.product-item:hover {
+    background-color: #f3e1f5;
+}
+
+.product-item label {
+    flex: 1;
+    color: #834b8f;
+    font-size: 1.1em;
+}
+
+.product-item input[type="checkbox"] {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+#total-amount {
+    font-weight: bold;
+    font-size: 2em;  /* Aumenta el tamaño */
+    color: #834b8f;
+    padding: 20px;
+    background-color: #fcdff1;
+    border-radius: 10px;
+    margin-top: 20px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);  /* Sombra para que se vea más destacado */
+}
+
+#payment-method,
+#account,
+#factura-date {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+#factura-date {
+    border-radius: 20px 5px 20px 5px; /* Asimétrico */
+}
+
+button {
+    width: 50%;
+    background-color: #834b8f;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    margin-top: 5px;
+}
+
+button:hover {
+    background-color: #6d3b73;
+}
+
+#account-selection {
+    display: none;
+}
+
+/* Diseño para el cuadro de valor total */
+#total-amount {
+    font-size: 2em;  /* Aumenta el tamaño del valor total */
+    font-weight: bold;
+    padding: 30px;  /* Aumenta el padding para hacerlo más grande */
+    background-color: #f3f0ff;
+    border-radius: 15px;
+    margin-top: 20px;
+    color: #834b8f;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#back, #logout {
+    margin-top: 20px;
+    background-color: #d9534f;
+}
+
+#back:hover, #logout:hover {
+    background-color: #c12e2a;
+}

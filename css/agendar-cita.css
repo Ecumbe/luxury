@@ -12,10 +12,10 @@ body {
     background-color: #fcdff1;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    width: 450px;
+    padding: 20px;
+    width: 400px;  /* Reducido para optimizar espacio */
     text-align: center;
-    overflow: hidden; /* Evitar desbordamiento en el contenedor principal */
+    overflow: hidden;
     display: flex;
     flex-direction: column;
 }
@@ -26,7 +26,7 @@ h2, h3 {
 }
 
 .form-container {
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .form-row {
@@ -43,7 +43,7 @@ label {
 }
 
 input {
-    width: 48%;
+    width: 45%;  /* Ajuste para que los inputs ocupen menos espacio */
     padding: 8px;
     margin: 10px 0;
     border-radius: 5px;
@@ -73,20 +73,22 @@ button:hover {
 }
 
 .citas-agendadas {
-    margin-top: 30px;
+    margin-top: 20px;
     padding: 10px;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    max-height: 300px; /* Limitar la altura de la sección de citas agendadas */
-    overflow-y: auto; /* Habilitar el scroll si las citas superan la altura */
+    max-height: 220px;  /* Reducido para evitar desbordamiento */
+    overflow-y: auto;  /* Scroll cuando haya muchas citas */
+    width: 100%;
+    margin-bottom: 20px;  /* Separación para no tocar el formulario */
 }
 
 #citas-list {
     margin-top: 20px;
     text-align: left;
-    max-height: 250px;
-    overflow-y: auto; /* Permitir scroll */
+    max-height: 200px;  /* Ajuste para no ocupar demasiado espacio */
+    overflow-y: auto;  /* Permitir scroll */
 }
 
 #citas-list div {
@@ -111,11 +113,31 @@ button:hover {
 }
 
 input[type="date"] {
-    width: 45%;
+    width: 60%;  /* Reducción de tamaño */
+    padding: 8px;
 }
 
-/* Ajustar los botones para que estén al lado de cada cita */
+input[type="time"] {
+    width: 40%;  /* Ajuste para optimizar espacio */
+    padding: 8px;
+}
+
+/* Ajustar los botones de "Sí" y "No" al lado */
 #citas-list div p {
     margin-right: 20px;
-    flex-grow: 1; /* Hacer que el texto ocupe el espacio disponible */
+    flex-grow: 1;
+}
+
+#citas-list button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #834b8f;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#citas-list button:hover {
+    background-color: #6d3b73;
 }
